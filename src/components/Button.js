@@ -4,7 +4,7 @@ import LanguageContext from "../contexts/LanguageContext";
 import ColorContext from "../contexts/ColorContext";
 
 const Button = () => {
-  const getLanguage = language => {
+  const getText = language => {
     switch (language) {
       case "german":
         return "Einreichen";
@@ -24,7 +24,7 @@ const Button = () => {
             htmlType="submit"
           >
             <LanguageContext.Consumer>
-              {value => getLanguage(value)}
+              {({ language }) => getText(language)}
             </LanguageContext.Consumer>
           </AntButton>
         )}

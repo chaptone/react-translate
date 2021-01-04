@@ -3,7 +3,7 @@ import { Input, Form } from "antd";
 import LanguageContext from "../contexts/LanguageContext";
 
 const Field = () => {
-  const language = useContext(LanguageContext);
+  const { language } = useContext(LanguageContext);
   const getLanguage = language => {
     switch (language) {
       case "german":

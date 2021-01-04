@@ -1,29 +1,19 @@
 import React, { useState } from "react";
 import { Typography } from "antd";
 import UserCreate from "./userCreate";
-import LanguageContext from "../contexts/LanguageContext";
+import { LanguageStore } from "../contexts/LanguageContext";
 import ColorContext from "../contexts/ColorContext";
+import LanguageSelector from "./LanguageSelector";
 
 const App = () => {
-  const [language, setLanguage] = useState("english");
   return (
     <Typography.Text>
-      Select Language:
-      <i style={{ fontSize: "20px" }} onClick={() => setLanguage("german")}>
-        🇩🇪
-      </i>
-      <i style={{ fontSize: "20px" }} onClick={() => setLanguage("english")}>
-        🇺🇸
-      </i>
-      <i style={{ fontSize: "20px" }} onClick={() => setLanguage("thai")}>
-        🇹🇭
-      </i>
-      {language}
-      <ColorContext.Provider value="red">
-        <LanguageContext.Provider value={language}>
+      <LanguageStore>
+        <LanguageSelector />
+        <ColorContext.Provider value="red">
           <UserCreate />
-        </LanguageContext.Provider>
-      </ColorContext.Provider>
+        </ColorContext.Provider>
+      </LanguageStore>
     </Typography.Text>
   );
 };
